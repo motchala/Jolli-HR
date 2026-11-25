@@ -62,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <h2>Student Login</h2>
       <?php if ($err): ?><div class="form-err" role="alert"><?= ic('alert') ?><span><?= $err ?></span></div><?php endif; ?>
       <label class="field"><?= ic('mail') ?><input type="email" name="email" autocomplete="username" autocapitalize="none" autocorrect="off" spellcheck="false" inputmode="email" placeholder="Email Address" value="<?= htmlspecialchars($_POST['email'] ?? '') ?>" required></label>
-      <label class="field"><?= ic('lock') ?><input type="password" name="password" autocomplete="current-password" placeholder="Password" required><button type="button" class="pw-toggle" data-pw>Show</button></label>
+      <label class="field"><?= ic('lock') ?><input type="password" name="password" autocomplete="current-password" placeholder="Password" required><?= pw_toggle() ?></label>
       <div class="row between"><label class="remember"><input type="checkbox"> Remember Me</label><a class="link" href="forgot.php">Forgot Password?</a></div>
       <button class="btn big" type="submit">Log In</button>
       <div class="divider"><span>Don't have an account yet?</span></div>

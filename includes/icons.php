@@ -27,6 +27,16 @@ function ic($n, $c = '')
     'mail' => '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>',
     'lock' => '<rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/>',
     'trend' => '<path d="M3 17l6-6 4 4 8-8M15 7h6v6"/>',
+    'eye' => '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8S1 12 1 12z"/><circle cx="12" cy="12" r="3"/>',
+    'eye-off' => '<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><path d="M1 1l22 22"/>',
   ];
   return '<svg class="ic ' . $c . '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' . $p[$n] . '</svg>';
+}
+
+// Show/hide password button. Both icons are in the markup; CSS shows the right one from aria-pressed
+// (eye = "click to show", eye-off = "click to hide"), and assets/js/app.js flips the state.
+function pw_toggle()
+{
+  return '<button type="button" class="pw-toggle" data-pw aria-label="Show password" aria-pressed="false">'
+    . ic('eye', 'ic-eye') . ic('eye-off', 'ic-off') . '</button>';
 }

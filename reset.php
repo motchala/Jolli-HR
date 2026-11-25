@@ -132,7 +132,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $tokenValid) {
                    pattern="(?=.*[A-Za-z])(?=.*\d).{8,72}"
                    title="8–72 characters with at least one letter and one number"
                    required autofocus>
-            <button type="button" class="pw-toggle" data-pw>Show</button>
+            <?= pw_toggle() ?>
           </label>
           <small class="field-hint">At least 8 characters, with a letter and a number.</small>
           <label class="field" style="margin-top:8px">
@@ -141,7 +141,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $tokenValid) {
                    placeholder="Confirm new password"
                    minlength="8" maxlength="72"
                    required>
-            <button type="button" class="pw-toggle" data-pw>Show</button>
+            <?= pw_toggle() ?>
           </label>
           <button class="btn big" type="submit" style="margin-top:8px">Update Password</button>
         </form>

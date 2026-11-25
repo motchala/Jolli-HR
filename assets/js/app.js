@@ -12,7 +12,9 @@ document.querySelectorAll('[data-tabs]').forEach(function (g) {
 document.querySelectorAll('[data-pw]').forEach(function (b) {
   b.addEventListener('click', function () {
     var i = b.parentNode.querySelector('input'), show = i.type === 'password';
-    i.type = show ? 'text' : 'password'; b.textContent = show ? 'Hide' : 'Show';
+    i.type = show ? 'text' : 'password';
+    b.setAttribute('aria-pressed', show ? 'true' : 'false');
+    b.setAttribute('aria-label', show ? 'Hide password' : 'Show password');
   });
 });
 // Toggle buttons (Apply / Select / Swap)

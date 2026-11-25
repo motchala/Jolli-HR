@@ -1148,10 +1148,44 @@ main {
 }
 
 .pw-toggle {
-    font-size: 13px;
-    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: none;
+    width: 40px;
+    height: 40px;
+    margin-right: -10px;
+    border-radius: 50%;
     color: var(--red);
-    padding: 4px 2px
+    -webkit-tap-highlight-color: transparent;
+    transition: background .15s
+}
+
+/* beats `.field .ic { opacity: .75 }` so the icon is as strong as the old "Show" text */
+.field .pw-toggle .ic {
+    width: 20px;
+    height: 20px;
+    opacity: 1
+}
+
+/* display rules stay at equal-or-lower specificity than the state rules below, in this order */
+.pw-toggle .ic {
+    display: block
+}
+
+.pw-toggle .ic-off,
+.pw-toggle[aria-pressed="true"] .ic-eye {
+    display: none
+}
+
+.pw-toggle[aria-pressed="true"] .ic-off {
+    display: block
+}
+
+@media (hover: hover) {
+    .pw-toggle:hover {
+        background: var(--pink)
+    }
 }
 
 .remember {
@@ -1432,11 +1466,6 @@ main {
     .field-row .field input {
         font-size: 16px;
         padding: var(--m-field-y) 0
-    }
-
-    .pw-toggle {
-        padding: 10px 4px;
-        margin-right: -4px
     }
 
     .remember {
