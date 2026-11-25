@@ -67,9 +67,11 @@ $namePat = "[A-Za-zÀ-ÖØ-öø-ÿ][A-Za-zÀ-ÖØ-öø-ÿ .'’\\-]*";
 
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#7a0014">
   <title>Create Account · JolliHR</title>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="assets/js/device.js"></script>
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
@@ -89,9 +91,9 @@ $namePat = "[A-Za-zÀ-ÖØ-öø-ÿ][A-Za-zÀ-ÖØ-öø-ÿ .'’\\-]*";
         <div><label class="field<?= bad('first') ?>"><input type="text" name="first" placeholder="First Name" minlength="2" maxlength="50" pattern="<?= htmlspecialchars($namePat) ?>" title="Letters, spaces, hyphens and apostrophes only" value="<?= htmlspecialchars($first) ?>" required></label><?= fe('first') ?></div>
         <div><label class="field<?= bad('last') ?>"><input type="text" name="last" placeholder="Last Name" minlength="2" maxlength="50" pattern="<?= htmlspecialchars($namePat) ?>" title="Letters, spaces, hyphens and apostrophes only" value="<?= htmlspecialchars($last) ?>" required></label><?= fe('last') ?></div>
       </div>
-      <label class="field<?= bad('email') ?>"><?= ic('doc') ?><input type="email" name="email" placeholder="Email Address" maxlength="190" pattern=".+(@jollihr\.com|\.test)" title="Email must end with @jollihr.com or .test" value="<?= htmlspecialchars($email) ?>" required></label><?= fe('email') ?>
-      <label class="field<?= bad('password') ?>"><?= ic('user') ?><input type="password" name="password" placeholder="Password" minlength="8" maxlength="72" pattern="(?=.*[A-Za-z])(?=.*\d).{8,72}" title="8–72 characters with at least one letter and one number" required><button type="button" class="pw-toggle" data-pw>Show</button></label><?= isset($errs['password']) ? fe('password') : '<small class="field-hint">At least 8 characters, with a letter and a number.</small>' ?>
-      <label class="field<?= bad('confirm') ?>"><?= ic('user') ?><input type="password" name="confirm" placeholder="Confirm Password" minlength="8" maxlength="72" required><button type="button" class="pw-toggle" data-pw>Show</button></label><?= fe('confirm') ?>
+      <label class="field<?= bad('email') ?>"><?= ic('mail') ?><input type="email" name="email" placeholder="Email Address" maxlength="190" pattern=".+(@jollihr\.com|\.test)" title="Email must end with @jollihr.com or .test" value="<?= htmlspecialchars($email) ?>" required></label><?= fe('email') ?>
+      <label class="field<?= bad('password') ?>"><?= ic('lock') ?><input type="password" name="password" placeholder="Password" minlength="8" maxlength="72" pattern="(?=.*[A-Za-z])(?=.*\d).{8,72}" title="8–72 characters with at least one letter and one number" required><button type="button" class="pw-toggle" data-pw>Show</button></label><?= isset($errs['password']) ? fe('password') : '<small class="field-hint">At least 8 characters, with a letter and a number.</small>' ?>
+      <label class="field<?= bad('confirm') ?>"><?= ic('lock') ?><input type="password" name="confirm" placeholder="Confirm Password" minlength="8" maxlength="72" required><button type="button" class="pw-toggle" data-pw>Show</button></label><?= fe('confirm') ?>
       <button class="btn big" type="submit">Create Account</button>
       <div class="divider"><span>Already have an account?</span></div>
       <a class="btn outline big" href="login.php">Log In</a>

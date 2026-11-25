@@ -1,10 +1,21 @@
 <?php
-// XAMPP defaults. Change here if your MySQL uses a different user/password.
-// NOTE: DB_NAME must match the database created in database.sql.
-if (!defined('DB_HOST')) define('DB_HOST', 'sql307.infinityfree.com');
-if (!defined('DB_NAME')) define('DB_NAME', 'if0_43535573_jollihr');
-if (!defined('DB_USER')) define('DB_USER', 'if0_43535573');
-if (!defined('DB_PASS')) define('DB_PASS', '5QshXBkl2vJi ');
+// On your own computer (localhost / 127.0.0.1) the app uses the XAMPP MySQL defaults below.
+// Anywhere else (the live InfinityFree site) it uses the hosted database.
+// DB_NAME must match the database created in database.sql.
+$__host = strtolower(preg_replace('/:\d+$/', '', $_SERVER['HTTP_HOST'] ?? ''));
+$__local = in_array($__host, ['localhost', '127.0.0.1', '[::1]', '::1'], true) || PHP_SAPI === 'cli';
+if ($__local) {
+  if (!defined('DB_HOST')) define('DB_HOST', '127.0.0.1');
+  if (!defined('DB_NAME')) define('DB_NAME', 'jollihr');
+  if (!defined('DB_USER')) define('DB_USER', 'root');
+  if (!defined('DB_PASS')) define('DB_PASS', '');
+} else {
+  if (!defined('DB_HOST')) define('DB_HOST', 'sql307.infinityfree.com');
+  if (!defined('DB_NAME')) define('DB_NAME', 'if0_43535573_jollihr');
+  if (!defined('DB_USER')) define('DB_USER', 'if0_43535573');
+  if (!defined('DB_PASS')) define('DB_PASS', '5QshXBkl2vJi ');
+}
+unset($__host, $__local);
 
 // Adjust if the project is served from a different subdirectory or vhost root.
 define('BASE_PATH', '');   // No trailing slash.

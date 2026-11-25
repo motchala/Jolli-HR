@@ -24,6 +24,8 @@ function ic($n, $c = '')
     'sliders' => '<path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/>',
     'store' => '<path d="M4 9l1-5h14l1 5M5 9v11h14V9M3 9c0 2.5 3 2.5 4.5 0 1.5 2.5 3 2.5 4.5 0 1.500 2.5 3 2.5 4.5 0 1.500 2.5 4.500 2.500 4.500 0"/>',
     'target' => '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/>',
+    'mail' => '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>',
+    'lock' => '<rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/>',
     'trend' => '<path d="M3 17l6-6 4 4 8-8M15 7h6v6"/>',
   ];
   return '<svg class="ic ' . $c . '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' . $p[$n] . '</svg>';

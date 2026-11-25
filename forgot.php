@@ -53,9 +53,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#7a0014">
   <title>Forgot Password · JolliHR</title>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="assets/js/device.js"></script>
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body class="login-body">
@@ -103,7 +105,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <?php endif; ?>
         <form method="post" autocomplete="on">
           <label class="field">
-            <?= ic('doc') ?>
+            <?= ic('mail') ?>
             <input type="email" name="email"
                    placeholder="Your registered email address"
                    value="<?= htmlspecialchars($_POST['email'] ?? '') ?>"

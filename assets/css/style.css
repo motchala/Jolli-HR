@@ -939,54 +939,148 @@ main {
     height: 24px
 }
 
-/* login */
+/* ── Login / auth pages ─────────────────────────────────────────
+   Shared by login, signup, forgot and reset so they stay in sync.
+   Layout: a lightly blurred storefront photo fills the page and the
+   brand header + form card float on top of it. */
+:root {
+    --gold: #ffc93c
+}
+
 .login-body {
-    background: #f3e9e8
+    min-height: 100vh;
+    background: #3b2a28
+}
+
+/* photo (soft blur, building stays recognisable) + neutral scrim */
+.login-body::before,
+.login-body::after {
+    content: '';
+    position: fixed;
+    z-index: -1
+}
+
+.login-body::before {
+    inset: -12px;
+    background: url(../img/storefront.jpg) 62% 50% / cover no-repeat;
+    filter: blur(3px)
+}
+
+.login-body::after {
+    inset: 0;
+    background:
+        linear-gradient(180deg, rgba(193, 18, 31, 0) 52%, rgba(193, 18, 31, .45) 76%, rgba(140, 0, 21, .88) 100%),
+        linear-gradient(180deg, rgba(28, 8, 10, .55) 0%, rgba(28, 8, 10, .14) 40%, rgba(28, 8, 10, .10) 100%)
 }
 
 .login {
-    background: #ffeceb;
+    background: transparent;
     padding: 0;
     display: flex;
-    flex-direction: column
+    flex-direction: column;
+    overflow: visible
 }
 
+/* header floats straight on the photo */
 .login-top {
+    position: relative;
     text-align: center;
-    padding: 36px 24px 20px
+    color: #fff;
+    padding: 34px 24px 24px;
+    text-shadow: 0 2px 14px rgba(20, 0, 4, .55)
 }
 
 .brand.center {
-    justify-content: center;
-    margin-bottom: 22px
+    display: inline-flex;
+    margin-bottom: 20px;
+    padding: 7px 18px 7px 7px;
+    border-radius: 999px;
+    background: rgba(40, 8, 12, .38);
+    border: 1px solid rgba(255, 255, 255, .38);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    text-align: left;
+    text-shadow: none
 }
 
 .brand.center .logo {
     width: 40px;
-    height: 40px
+    height: 40px;
+    background: #fff;
+    color: var(--red);
+    box-shadow: 0 4px 10px rgba(20, 0, 4, .3)
 }
 
 .brand.center b {
-    font-size: 19px
+    font-size: 19px;
+    color: #fff
+}
+
+.brand.center small {
+    color: rgba(255, 255, 255, .92)
 }
 
 .login h1 {
-    font-size: 30px;
+    font-size: 32px;
     font-weight: 700;
-    color: var(--red-d);
-    line-height: 1.15
+    color: #fff;
+    line-height: 1.12;
+    letter-spacing: -.01em
+}
+
+.login h1 .hl {
+    color: var(--gold)
 }
 
 .login-top p {
-    font-size: 17px;
-    margin-top: 10px
+    font-size: 16.5px;
+    margin-top: 10px;
+    color: rgba(255, 255, 255, .95)
 }
 
+.perks {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 20px
+}
+
+.perks li {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px 6px 9px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 500;
+    text-shadow: none;
+    background: rgba(40, 8, 12, .38);
+    border: 1px solid rgba(255, 255, 255, .34);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px)
+}
+
+.perks .ic {
+    width: 15px;
+    height: 15px;
+    color: var(--gold)
+}
+
+/* floating frosted card */
 .login-card {
-    margin: 0 16px;
-    padding: 24px 20px;
+    position: relative;
+    z-index: 1;
+    margin: 6px 16px 20px;
+    padding: 28px 22px 24px;
     border-radius: 28px;
-    border: 0
+    background: rgba(255, 255, 255, .985);
+    border: 1px solid #fff;
+    box-shadow:
+        0 40px 70px -20px rgba(20, 0, 4, .65),
+        0 14px 30px -8px rgba(20, 0, 4, .35),
+        0 0 0 1px rgba(20, 0, 4, .06)
 }
 
 .login-card h2 {
@@ -994,8 +1088,8 @@ main {
     font-size: 24px;
     font-weight: 700;
     color: var(--red-d);
-    padding-bottom: 10px;
-    margin-bottom: 20px;
+    padding-bottom: 12px;
+    margin-bottom: 22px;
     position: relative
 }
 
@@ -1004,22 +1098,28 @@ main {
     position: absolute;
     left: 50%;
     bottom: 0;
-    width: 72px;
+    width: 64px;
     height: 4px;
-    margin-left: -36px;
+    margin-left: -32px;
     border-radius: 4px;
-    background: var(--red)
+    background: linear-gradient(90deg, var(--red), var(--gold))
 }
 
 .field {
     display: flex;
     align-items: center;
     gap: 10px;
-    border: 1px solid var(--line);
+    border: 1.5px solid #f2dedc;
+    background: #fffafa;
     border-radius: 999px;
     padding: 0 18px;
     margin-bottom: 14px;
-    color: var(--muted)
+    color: var(--red);
+    transition: border-color .15s, box-shadow .15s, background .15s
+}
+
+.field .ic {
+    opacity: .75
 }
 
 .field input {
@@ -1033,84 +1133,652 @@ main {
     min-width: 0
 }
 
+.field input::placeholder {
+    color: #a39495
+}
+
 .field:focus-within {
-    border-color: var(--red)
+    border-color: var(--red);
+    background: #fff;
+    box-shadow: 0 0 0 4px rgba(193, 18, 31, .12)
+}
+
+.field:focus-within .ic {
+    opacity: 1
 }
 
 .pw-toggle {
     font-size: 13px;
-    color: var(--muted)
+    font-weight: 600;
+    color: var(--red);
+    padding: 4px 2px
 }
 
 .remember {
     display: flex;
     align-items: center;
     gap: 8px;
-    font-size: 14px
+    font-size: 14px;
+    cursor: pointer
+}
+
+.remember input {
+    width: 17px;
+    height: 17px;
+    accent-color: var(--red)
 }
 
 .login-card .row {
-    margin: 4px 0 18px
+    margin: 4px 0 20px
+}
+
+.login-card .link:hover {
+    text-decoration: underline
+}
+
+.login-card .btn.big {
+    transition: transform .15s, box-shadow .15s
+}
+
+.login-card .btn.big:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 20px rgba(155, 0, 23, .3)
+}
+
+.login-card .btn.big:active {
+    transform: scale(.98)
 }
 
 .divider {
-    text-align: center;
-    margin: 20px 0 14px;
-    position: relative;
-    color: var(--muted)
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 22px 0 16px;
+    color: var(--muted);
+    font-size: 14px
 }
 
-.divider::before {
+.divider::before,
+.divider::after {
     content: '';
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 50%;
+    flex: 1;
     height: 1px;
-    background: var(--line)
-}
-
-.divider span {
-    position: relative;
-    background: #fff;
-    padding: 0 12px
+    background: #e9dcda
 }
 
 .login-card .btn.outline {
-    width: 80%;
-    margin: 0 auto;
+    width: 100%;
     display: flex;
-    padding: 13px
+    padding: 13px;
+    border-color: #e9b9b6;
+    transition: background .15s, border-color .15s
+}
+
+.login-card .btn.outline:hover {
+    background: var(--pink);
+    border-color: var(--red)
 }
 
 .form-err {
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
     background: #ffe8e6;
-    color: #c4141f;
-    border-radius: 12px;
-    padding: 10px 14px;
+    color: #b0121c;
+    border: 1px solid #f6c5c1;
+    border-radius: 14px;
+    padding: 11px 14px;
     font-size: 14px;
-    margin-bottom: 14px
+    margin-bottom: 16px
 }
 
+.login-card .hint,
 .hint {
     text-align: center;
-    font-size: 12px;
+    font-size: 12.5px;
     color: var(--muted);
-    margin-top: 16px
+    margin-top: 18px;
+    padding: 9px 12px;
+    border-radius: 12px;
+    background: #fff6f5;
+    border: 1px dashed #efc9c6;
+    word-break: break-word
 }
 
+.hint b {
+    color: var(--red-d);
+    font-weight: 600
+}
+
+/* footer sits on the photo too */
 .login-foot {
     margin-top: auto;
-    padding: 32px 20px;
+    padding: 18px 20px 26px;
     text-align: center;
     color: #fff;
     font-size: 14px;
-    border-radius: 36px 36px 0 0;
-    background: linear-gradient(135deg, #d3182a, var(--red-d))
+    text-shadow: 0 1px 8px rgba(20, 0, 4, .7)
+}
+
+/* ── Landing layout ──────────────────────────────────────────── */
+/* tablets: keep the single column but let it breathe */
+@media (min-width: 600px) and (max-width: 959px) {
+    .login {
+        max-width: 520px
+    }
+}
+
+/* ── Phone layout ────────────────────────────────────────────────
+   Portrait phones: brand + headline over a softly blurred photo, the
+   form card is anchored to the bottom edge so it sits in thumb reach.
+
+   Sizing is FLUID. Every size in this block comes from the tokens just
+   below, and each token scales smoothly with the screen's width and
+   height (clamp). There are no per-device breakpoints, so a phone a few
+   pixels taller or wider just looks a few pixels roomier, never
+   "different". The only hard step is hiding the tagline on short screens
+   (see the end of this block).
+
+   --vh is set by assets/js/device.js (falls back to 1vh). */
+@media (max-width: 599px) {
+    html {
+        -webkit-text-size-adjust: 100%
+    }
+
+    .login-body {
+        /* background: how soft the storefront photo is on phones (desktop/tablet unaffected) */
+        --m-blur: 8px;
+        /* horizontal */
+        --m-gutter: clamp(16px, 5.2vw, 24px);
+        /* header side padding */
+        --m-card-x: clamp(8px, 3vw, 14px);
+        /* card <-> screen edge */
+        --m-card-pad-x: clamp(14px, 4.6vw, 20px);
+        /* inside the card */
+        /* vertical rhythm: one unit that shrinks on short screens */
+        --m-space: clamp(8px, calc(var(--vh, 1vh) * 1.9), 16px);
+        --m-field-y: clamp(10px, calc(var(--vh, 1vh) * 1.6), 12px);
+        --m-btn-h: clamp(46px, calc(var(--vh, 1vh) * 6.4), 50px);
+        /* type */
+        --m-title: clamp(26px, min(8vw, calc(var(--vh, 1vh) * 4.3)), 34px);
+        --m-text: clamp(14px, 3.7vw, 15px);
+        --m-pill: clamp(11px, 3.2vw, 13px);
+
+        background: #7a0014;
+        -webkit-tap-highlight-color: transparent
+    }
+
+    /* photo: one fixed crop for every phone size, blurred, fading into the red.
+       Bleeds 24px past the screen so the blur never shows a soft edge. */
+    .login-body::before {
+        top: -24px;
+        left: -24px;
+        right: -24px;
+        bottom: auto;
+        height: calc(var(--vh, 1vh) * 66 + 24px);
+        background: url(../img/storefront.jpg) 72% 34% / auto 125% no-repeat;
+        filter: blur(var(--m-blur)) saturate(.85);
+        transform: translateZ(0);
+        -webkit-mask-image: linear-gradient(180deg, #000 62%, transparent 100%);
+        mask-image: linear-gradient(180deg, #000 62%, transparent 100%)
+    }
+
+    /* scrim: top shade for the headline, red bleed at the bottom, plus a light overall dim
+       so the photo stays in the background */
+    .login-body::after {
+        background:
+            linear-gradient(180deg, rgba(193, 18, 31, 0) 36%, rgba(193, 18, 31, .5) 62%, rgba(122, 0, 20, .96) 88%),
+            linear-gradient(180deg, rgba(24, 6, 9, .62) 0%, rgba(24, 6, 9, .36) 28%, rgba(24, 6, 9, .08) 52%),
+            linear-gradient(rgba(24, 6, 9, .22), rgba(24, 6, 9, .22))
+    }
+
+    .app.login {
+        min-height: calc(var(--vh, 1vh) * 100);
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)
+    }
+
+    /* header */
+    .login-top {
+        text-align: left;
+        padding: var(--m-space) var(--m-gutter) calc(var(--m-space) * 1.6)
+    }
+
+    .brand.center {
+        margin-bottom: var(--m-space);
+        padding: 5px 16px 5px 5px
+    }
+
+    .brand.center .logo {
+        width: 36px;
+        height: 36px
+    }
+
+    .brand.center b {
+        font-size: 17px
+    }
+
+    .brand.center small {
+        font-size: 10.5px
+    }
+
+    .login h1 {
+        font-size: var(--m-title);
+        line-height: 1.08;
+        letter-spacing: -.02em;
+        white-space: nowrap
+    }
+
+    .login-top p {
+        font-size: var(--m-text);
+        line-height: 1.38;
+        max-width: 22em;
+        margin-top: calc(var(--m-space) * .45)
+    }
+
+    /* perks: a wrapping row of pills sized in em, so the pill, its icon, padding and gap all scale
+       together with --m-pill. Never scrolls sideways and can never poke past the screen edge; if a
+       user's text size ever makes the row too wide, the last pill drops to a second line instead. */
+    .perks {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        gap: calc(var(--m-space) * .5) .45em;
+        margin: var(--m-space) 0 0;
+        padding: 0;
+        font-size: var(--m-pill)
+    }
+
+    .perks li {
+        flex: 0 0 auto;
+        max-width: 100%;
+        white-space: nowrap;
+        font-size: 1em;
+        gap: .38em;
+        padding: .45em .8em .45em .6em
+    }
+
+    .perks .ic {
+        width: 1.15em;
+        height: 1.15em
+    }
+
+    /* "Plan your schedule" -> "Plan schedule" so all three pills share one row on every phone */
+    .perk-opt {
+        display: none
+    }
+
+    /* form card, anchored to the bottom */
+    .login-card {
+        margin: auto var(--m-card-x) 0;
+        padding: calc(var(--m-space) * 1.2) var(--m-card-pad-x) var(--m-space);
+        border-radius: 28px;
+        box-shadow:
+            0 24px 48px -16px rgba(20, 0, 4, .7),
+            0 8px 20px -6px rgba(20, 0, 4, .4),
+            0 0 0 1px rgba(20, 0, 4, .06)
+    }
+
+    .login-card h2 {
+        font-size: 21px;
+        padding-bottom: calc(var(--m-space) * .6);
+        margin-bottom: var(--m-space)
+    }
+
+    /* comfortable touch targets; 16px stops iOS zooming on focus */
+    .field {
+        margin-bottom: calc(var(--m-space) * .8)
+    }
+
+    .field input,
+    .field-row .field input {
+        font-size: 16px;
+        padding: var(--m-field-y) 0
+    }
+
+    .pw-toggle {
+        padding: 10px 4px;
+        margin-right: -4px
+    }
+
+    .remember {
+        padding: 6px 0
+    }
+
+    .remember input {
+        width: 20px;
+        height: 20px
+    }
+
+    .login-card .link {
+        padding: 8px 0
+    }
+
+    .login-card .row {
+        margin: 0 0 var(--m-space)
+    }
+
+    .login-card .btn.big {
+        padding: 12px;
+        min-height: var(--m-btn-h)
+    }
+
+    .divider {
+        margin: var(--m-space) 0 calc(var(--m-space) * .7)
+    }
+
+    .login-card .btn.outline {
+        padding: 11px;
+        min-height: calc(var(--m-btn-h) - 2px)
+    }
+
+    .login-card .hint,
+    .hint {
+        margin-top: calc(var(--m-space) * .8);
+        padding: 7px 10px;
+        font-size: 12px
+    }
+
+    .login-foot {
+        margin-top: 0;
+        padding: calc(var(--m-space) * .8) 20px calc(var(--m-space) * .9);
+        font-size: 13px
+    }
+}
+
+/* short phones: the one hard step in the phone layout. The tagline goes so the form still fits
+   on screen; everything else just keeps shrinking smoothly via the tokens above. */
+@media (max-width: 599px) and (max-height: 719px) {
+    .login-top p {
+        display: none
+    }
+}
+
+/* phones turned sideways: headline left, form right, nothing scrolls off */
+@media (orientation: landscape) and (max-height: 520px) and (min-width: 560px) and (max-width: 959px) {
+    .login-body::before {
+        inset: -8px;
+        height: auto;
+        background-position: 62% 45%;
+        background-size: cover;
+        -webkit-mask-image: none;
+        mask-image: none
+    }
+
+    .login-body::after {
+        background:
+            linear-gradient(180deg, rgba(193, 18, 31, 0) 55%, rgba(193, 18, 31, .45) 80%, rgba(122, 0, 20, .9) 100%),
+            linear-gradient(90deg, rgba(24, 6, 9, .72) 0%, rgba(24, 6, 9, .4) 45%, rgba(24, 6, 9, 0) 75%)
+    }
+
+    .app.login {
+        max-width: none;
+        min-height: calc(var(--vh, 1vh) * 100);
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(300px, 380px);
+        grid-template-rows: 1fr auto;
+        grid-template-areas: "top card" "foot foot";
+        align-items: center;
+        column-gap: 28px;
+        padding: max(10px, env(safe-area-inset-top)) max(24px, env(safe-area-inset-right)) env(safe-area-inset-bottom) max(24px, env(safe-area-inset-left))
+    }
+
+    .login-top {
+        grid-area: top;
+        padding: 0;
+        text-align: left
+    }
+
+    .brand.center {
+        margin-bottom: 10px
+    }
+
+    .login h1 {
+        font-size: 28px;
+        white-space: normal
+    }
+
+    .login-top p {
+        font-size: 14px;
+        margin-top: 6px
+    }
+
+    .perks {
+        margin: 12px 0 0;
+        padding: 0;
+        flex-wrap: wrap
+    }
+
+    .login-top+.login-card,
+    .login-card {
+        grid-area: card;
+        margin: 0;
+        padding: 14px 18px 12px;
+        border-radius: 22px
+    }
+
+    .login-card h2 {
+        font-size: 17px;
+        padding-bottom: 7px;
+        margin-bottom: 8px
+    }
+
+    .login-card h2::after {
+        height: 3px
+    }
+
+    .field {
+        margin-bottom: 6px
+    }
+
+    .field input {
+        padding: 8px 0
+    }
+
+    .login-card .row {
+        margin: 0 0 8px
+    }
+
+    .remember,
+    .login-card .link {
+        padding: 2px 0
+    }
+
+    .login-card .btn.big {
+        min-height: 44px;
+        padding: 11px
+    }
+
+    .divider {
+        margin: 10px 0 8px
+    }
+
+    .login-card .btn.outline {
+        min-height: 42px;
+        padding: 10px
+    }
+
+    .login-card .hint {
+        display: none
+    }
+
+    .login-foot {
+        display: none
+    }
+
+    .login-card .btn.big {
+        min-height: 40px;
+        padding: 9px
+    }
+
+    .login-card .btn.outline {
+        min-height: 38px;
+        padding: 8px
+    }
+
+    .divider {
+        margin: 8px 0 6px
+    }
+
+    .perks li {
+        font-size: 12px;
+        padding: 5px 10px 5px 8px
+    }
+}
+
+/* the sideways-phone layout above resets the photo's bleed; with the phone blur it needs the larger one */
+@media (orientation: landscape) and (max-height: 520px) and (min-width: 560px) and (max-width: 599px) {
+    .login-body::before {
+        inset: -24px
+    }
+}
+
+/* hover effects only where a real pointer exists, so they don't stick on touch screens */
+@media (hover: none) {
+
+    .login-card .btn.big:hover,
+    .login-card .btn.outline:hover {
+        transform: none;
+        box-shadow: none
+    }
+
+    .login-card .btn.outline:hover {
+        background: #fff;
+        border-color: #e9b9b6
+    }
+
+    .login-card .btn.big:hover {
+        box-shadow: 0 6px 14px rgba(155, 0, 23, .25)
+    }
+}
+
+/* zoom in a little and anchor right so the Jollibee sign lands in the gap between headline and card */
+@media (min-width: 960px) and (min-aspect-ratio: 6/5) {
+    .login-body::before {
+        background-size: 125% auto;
+        background-position: 100% 40%
+    }
+}
+
+/* desktop: headline on the left, form card on the right */
+@media (min-width: 960px) {
+    .login-body::after {
+        background:
+            linear-gradient(180deg, rgba(193, 18, 31, 0) 55%, rgba(193, 18, 31, .42) 80%, rgba(140, 0, 21, .85) 100%),
+            linear-gradient(90deg, rgba(24, 6, 9, .72) 0%, rgba(24, 6, 9, .45) 38%, rgba(24, 6, 9, .08) 62%, rgba(24, 6, 9, 0) 100%),
+            linear-gradient(180deg, rgba(24, 6, 9, .30) 0%, rgba(24, 6, 9, 0) 30%)
+    }
+
+    .app.login {
+        max-width: none;
+        min-height: 100vh;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 460px;
+        grid-template-rows: 1fr auto;
+        grid-template-areas: "top card" "foot foot";
+        align-items: center;
+        column-gap: clamp(48px, 7vw, 120px);
+        padding: 0 max(56px, calc((100vw - 1240px) / 2))
+    }
+
+    .login-top {
+        grid-area: top;
+        text-align: left;
+        padding: 56px 0 0
+    }
+
+    .brand.center {
+        margin-bottom: 36px
+    }
+
+    .login h1 {
+        font-size: clamp(46px, 5.2vw, 72px);
+        line-height: 1.04;
+        letter-spacing: -.02em;
+        max-width: 9em
+    }
+
+    .login-top p {
+        font-size: clamp(18px, 1.6vw, 22px);
+        max-width: 22em;
+        margin-top: 18px
+    }
+
+    .perks {
+        justify-content: flex-start;
+        gap: 10px;
+        margin-top: 30px
+    }
+
+    .perks li {
+        font-size: 15px;
+        padding: 9px 16px 9px 12px
+    }
+
+    .perks .ic {
+        width: 18px;
+        height: 18px
+    }
+
+    .login-card {
+        grid-area: card;
+        margin: 56px 0 0;
+        padding: 36px 36px 30px;
+        border-radius: 32px
+    }
+
+    .login-card h2 {
+        font-size: 26px
+    }
+
+    .login-foot {
+        grid-area: foot;
+        text-align: left;
+        padding: 20px 0 28px
+    }
+}
+
+/* entrance motion */
+@keyframes rise {
+    from {
+        opacity: 0;
+        transform: translateY(14px)
+    }
+
+    to {
+        opacity: 1;
+        transform: none
+    }
+}
+
+.login-top>* {
+    animation: rise .5s cubic-bezier(.2, .7, .2, 1) both
+}
+
+.login-top>*:nth-child(2) {
+    animation-delay: .06s
+}
+
+.login-top>*:nth-child(3) {
+    animation-delay: .12s
+}
+
+.login-top>*:nth-child(4) {
+    animation-delay: .18s
 }
 
 .login-card {
-    margin-bottom: 24px
+    animation: rise .6s .15s cubic-bezier(.2, .7, .2, 1) both
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .login-top>*,
+    .login-card {
+        animation: none
+    }
+
+    .login-card .btn.big {
+        transition: none
+    }
 }
 
 :focus-visible {
