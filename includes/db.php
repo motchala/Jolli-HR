@@ -1,13 +1,13 @@
 <?php
 // XAMPP defaults. Change here if your MySQL uses a different user/password.
 // NOTE: DB_NAME must match the database created in database.sql.
-if (!defined('DB_HOST')) define('DB_HOST', 'localhost');
-if (!defined('DB_NAME')) define('DB_NAME', 'jollihr_db');
-if (!defined('DB_USER')) define('DB_USER', 'root');
-if (!defined('DB_PASS')) define('DB_PASS', '');
+if (!defined('DB_HOST')) define('DB_HOST', 'sql307.infinityfree.com');
+if (!defined('DB_NAME')) define('DB_NAME', 'if0_43535573_jollihr');
+if (!defined('DB_USER')) define('DB_USER', 'if0_43535573');
+if (!defined('DB_PASS')) define('DB_PASS', '5QshXBkl2vJi ');
 
 // Adjust if the project is served from a different subdirectory or vhost root.
-define('BASE_PATH', '/Jolli-HR');   // No trailing slash.
+define('BASE_PATH', '');   // No trailing slash.
 
 function db_options()
 {
