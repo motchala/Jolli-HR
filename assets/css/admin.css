@@ -468,7 +468,7 @@ table { border-collapse: collapse; }
 
 /* ── Dashboard background (scoped to body.admin-dashboard only) ── */
 body.admin-dashboard {
-    background-color: #fff5f4;
+    background-color: #7b0315;
     background-image:
         radial-gradient(rgba(155,0,23,.07) 1px, transparent 1.6px),
         radial-gradient(circle at 10% 8%,  rgba(211,24,42,.16)  0, transparent 42%),
