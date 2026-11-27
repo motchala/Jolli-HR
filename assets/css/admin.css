@@ -465,3 +465,25 @@ table { border-collapse: collapse; }
 
 .doc-row:last-child { border-bottom: 0; }
 .doc-row .doc-name { flex: 1; font-weight: 500; }
+
+/* ── Dashboard background (scoped to body.admin-dashboard only) ── */
+body.admin-dashboard {
+    background-color: #fff5f4;
+    background-image:
+        radial-gradient(rgba(155,0,23,.07) 1px, transparent 1.6px),
+        radial-gradient(circle at 10% 8%,  rgba(211,24,42,.16)  0, transparent 42%),
+        radial-gradient(circle at 92% 12%, rgba(255,170,150,.30) 0, transparent 40%),
+        radial-gradient(circle at 85% 90%, rgba(193,18,31,.12)  0, transparent 45%),
+        radial-gradient(circle at 6% 88%,  rgba(255,200,190,.38) 0, transparent 42%),
+        linear-gradient(135deg, #fff7f6 0%, #ffe8e6 55%, #f5f5f7 100%);
+    background-size: 22px 22px, auto, auto, auto, auto, auto;
+    background-attachment: fixed;
+}
+
+/* Soft "glass" look for the stat cards so they sit nicely on the background */
+body.admin-dashboard .stat-card {
+    background: rgba(255,255,255,.86);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    border-color: rgba(240,232,231,.9);
+}

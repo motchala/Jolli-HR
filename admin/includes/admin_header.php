@@ -13,7 +13,7 @@ require_admin();
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/admin.css">
 </head>
-<body>
+<body class="admin-page admin-<?= h($active) ?>">
 <header class="admin-topbar">
   <div class="admin-brand">
     <div class="admin-logo">J</div>
