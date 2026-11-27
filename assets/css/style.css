@@ -1993,3 +1993,99 @@ main {
     min-width: 0;
     outline: 0
 }
+
+/* ── Notification dropdown ───────────────────────────────────── */
+
+/* Badge count on the bell (overrides the red dot from the original .bell i) */
+.bell-count {
+    position: absolute;
+    top: -6px;
+    right: -8px;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 4px;
+    border-radius: 999px;
+    background: var(--red);
+    border: 2px solid var(--bg);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    pointer-events: none
+}
+
+/* Dropdown panel */
+.notif-panel {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    width: min(320px, calc(100vw - 32px));
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(120, 20, 30, .14), 0 2px 8px rgba(120, 20, 30, .08);
+    border: 1px solid var(--line);
+    z-index: 100;
+    overflow: hidden
+}
+
+.notif-panel[hidden] {
+    display: none !important
+}
+
+.notif-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 16px 10px;
+    border-bottom: 1px solid var(--line)
+}
+
+.notif-head b {
+    font-size: 15px;
+    font-weight: 600
+}
+
+.notif-head button {
+    font-size: 12px;
+    color: var(--red);
+    font-weight: 500
+}
+
+.notif-list {
+    list-style: none;
+    max-height: 320px;
+    overflow-y: auto
+}
+
+.notif-item {
+    padding: 12px 16px;
+    border-top: 1px solid var(--line);
+    font-size: 13px;
+    line-height: 1.4
+}
+
+.notif-item:first-child {
+    border-top: 0
+}
+
+.notif-time {
+    display: block;
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 2px
+}
+
+.notif-empty {
+    padding: 24px 16px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 13px
+}
+
+/* The bell wrapper needs position:relative for the panel to anchor against */
+.bell {
+    position: relative
+}

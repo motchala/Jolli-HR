@@ -183,6 +183,20 @@ INSERT IGNORE INTO work_shifts (user_id, shift_name, day_of_week, start_time, en
 INSERT IGNORE INTO work_shifts (user_id, shift_name, day_of_week, start_time, end_time, branch, status)
   SELECT id, 'Evening Shift',   2, '17:00:00', '21:00:00', 'Jollibee - Binan',     'available' FROM users WHERE email = 'shamea@jollihr.test';
 
+-- ───────────────────────────────────────────────────────────────
+-- Notifications
+-- ───────────────────────────────────────────────────────────────
+
+CREATE TABLE IF NOT EXISTS notifications (
+  id         INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  user_id    INT UNSIGNED NOT NULL,
+  message    VARCHAR(255) NOT NULL,
+  is_read    TINYINT(1)   NOT NULL DEFAULT 0,
+  created_at TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  CONSTRAINT fk_notif_user FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 -- Password reset tokens
 CREATE TABLE IF NOT EXISTS password_resets (
   id         INT UNSIGNED NOT NULL AUTO_INCREMENT,
