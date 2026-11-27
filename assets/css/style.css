@@ -2089,3 +2089,33 @@ main {
 .bell {
     position: relative
 }
+
+/* ── Dashboard over landing background ──────────────────────── */
+/*
+   When login-body is on <body> for the student dashboard pages,
+   the .app shell sits on top of the blurred storefront photo.
+   Make it slightly translucent so the background shows through,
+   then give every card full opacity so content stays readable.
+*/
+.login-body .app:not(.login) {
+    background: rgba(255, 246, 245, 0.88);
+    -webkit-backdrop-filter: blur(2px);
+    backdrop-filter: blur(2px)
+}
+
+/* Cards and nav stay fully opaque so text is always crisp */
+.login-body .app:not(.login) .card,
+.login-body .app:not(.login) .hero,
+.login-body .app:not(.login) .bottom-nav,
+.login-body .app:not(.login) .topbar,
+.login-body .app:not(.login) .pagebar {
+    background: #fff
+}
+
+.login-body .app:not(.login) .hero {
+    background: linear-gradient(180deg, #ffe6e3, #fff0ee)
+}
+
+.login-body .app:not(.login) .bottom-nav {
+    background: #fff
+}

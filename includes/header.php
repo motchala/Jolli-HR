@@ -12,10 +12,11 @@ require_login();
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title><?= htmlspecialchars($title) ?> · JolliHR</title>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="assets/js/device.js"></script>
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
-<body>
+<body class="login-body">
   <div class="app">
     <?php if (!empty($home)): ?>
       <header class="topbar">
