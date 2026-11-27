@@ -13,7 +13,7 @@ if ($__local) {
   if (!defined('DB_HOST')) define('DB_HOST', 'sql307.infinityfree.com');
   if (!defined('DB_NAME')) define('DB_NAME', 'if0_43535573_jollihr');
   if (!defined('DB_USER')) define('DB_USER', 'if0_43535573');
-  if (!defined('DB_PASS')) define('DB_PASS', '5QshXBkl2vJi ');
+  if (!defined('DB_PASS')) define('DB_PASS', '5QshXBkl2vJi');
 }
 unset($__host, $__local);
 
